@@ -1,0 +1,25 @@
+{
+  "name": "toy-webpack",
+  "version": "1.0.0",
+  "description": "toy-webpack",
+  "main": "index.js",
+  "scripts": {
+    "build": "node bundle.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TingYinHelen/toy-webpack.git"
+  },
+  "author": "Helen",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/TingYinHelen/toy-webpack/issues"
+  },
+  "homepage": "https://github.com/TingYinHelen/toy-webpack#readme",
+  "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/parser": "^7.12.10",
+    "@babel/preset-env": "^7.12.10",
+    "@babel/traverse": "^7.12.10"
+  }
+}
