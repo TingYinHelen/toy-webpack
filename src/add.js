@@ -1,2 +1,1 @@
-import { randomFun } from './random.js';
-export default () => randomFun() + randomFun();
+export const add = (a, b) => a + b;

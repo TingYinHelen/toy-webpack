@@ -4,7 +4,7 @@
   "description": "toy-webpack",
   "main": "index.js",
   "scripts": {
-    "build": "node bundle.js"
+    "build": "node bundler.js"
   },
   "repository": {
     "type": "git",

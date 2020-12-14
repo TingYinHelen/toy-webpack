@@ -1,5 +1,5 @@
-import add from './src/add.js';
+import { addRandom } from './src/addRandom.js';
 import { minus } from './src/minus.js';
 
-console.log('add:', add(1,2));
+console.log('addRandom:', addRandom());
 console.log('minus:', minus(10,5));
