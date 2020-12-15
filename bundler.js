@@ -22,20 +22,13 @@ const createGraph = (file) => {
   const temp = [entry];
   const depsGraph = {};
 
-  // for (const module of temp) {
-  //   const deps = module.deps;
-  //   deps && deps.forEach((depFile) => {
-  //     temp.push(createAsset(depFile));
-  //   });
-  // }
-
-  temp.forEach((module) => {
+  for (const module of temp) {
     const deps = module.deps;
     deps && deps.forEach((depFile) => {
       temp.push(createAsset(depFile));
     });
-  });
-  console.log('temp=======', temp);
+  }
+
   temp.forEach((item) => {
     depsGraph[item.file] = {
       deps: item.deps,
@@ -48,20 +41,21 @@ const createGraph = (file) => {
 console.log('graph=========', createGraph('./src/index.js'));
 
 
-// function bundle(file) {
-//   const depsGraph = JSON.stringify(createGraph(file));
+function bundle(file) {
+  const depsGraph = JSON.stringify(createGraph(file));
 
-//   return `(function (graph) {
-//     function require(file) {
-//       file = file.indexOf('src') > -1 ? file : './src/' + file.slice(2);
-//       console.log('graph[file].code============', graph[file].code);
-//       eval(graph[file].code);
-//     }
-//     const exports = {};
-//     require('${file}');
-//   })(${depsGraph})`;
-// }
+  return `(function (graph) {
+    function require(file) {
+      console.log('file---------', file);
+      console.log('code---------', graph[file].code);
+      eval(graph[file].code);
+      return exports;
+    }
+    const exports = {};
+    return require('${file}');
+  })(${depsGraph})`;
+}
 
-// const content = bundle('./src/index.js');
+const content = bundle('./src/index.js');
 
-// fs.writeFileSync('./dist/bundle.js', content);
+fs.writeFileSync('./dist/bundle.js', content);
