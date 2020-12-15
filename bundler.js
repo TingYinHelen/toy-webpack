@@ -38,16 +38,11 @@ const createGraph = (file) => {
   return depsGraph;
 }
 
-console.log('graph=========', createGraph('./src/index.js'));
-
-
 function bundle(file) {
   const depsGraph = JSON.stringify(createGraph(file));
 
   return `(function (graph) {
     function require(file) {
-      console.log('file---------', file);
-      console.log('code---------', graph[file].code);
       eval(graph[file].code);
       return exports;
     }
